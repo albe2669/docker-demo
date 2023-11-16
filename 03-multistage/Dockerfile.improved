@@ -1,0 +1,8 @@
+FROM golang:1.21 as build
+WORKDIR /src
+COPY main.go /src
+RUN go build -o /bin/hello ./main.go
+
+FROM scratch as runner
+COPY --from=build /bin/hello /bin/hello
+CMD ["/bin/hello"]
