@@ -2,13 +2,13 @@ FROM node:16.13.0
 
 ENV PORT=8080
 
-WORKDIR /usr/src/app/server
+WORKDIR /server
 
 COPY . .
 RUN npm i
 
 RUN npm run build
 
-EXPOSE 3000
+EXPOSE ${PORT}
 
 CMD [ "npm", "run", "start" ]
